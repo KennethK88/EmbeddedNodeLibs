@@ -1,5 +1,4 @@
 #pragma once
-#include <IConnectionManager.h>
 
 /**
  * @file WiFiConnectionManager.h
@@ -14,7 +13,7 @@
  * can therefore be used by the controller independently of the concrete Wi-Fi
  * implementation.
  */
-class WiFiConnectionManager : public IConnectionManager
+class WiFiConnectionManager
 {
     public:
 
@@ -28,7 +27,7 @@ class WiFiConnectionManager : public IConnectionManager
          *
          * Configures the ESP32 Wi-Fi stack for station mode.
          */
-        void init() override;
+        void init();
 
         /**
          * @brief Attempts to establish the Wi-Fi connection.
@@ -37,7 +36,7 @@ class WiFiConnectionManager : public IConnectionManager
          * connection is established or the internal connection timeout is
          * reached. The result can be checked using isConnected().
          */
-        void connect() override;
+        void connect();
 
         /**
          * @brief Checks whether the Wi-Fi connection is currently established.
@@ -45,6 +44,5 @@ class WiFiConnectionManager : public IConnectionManager
          * @return true if the microcontroller is connected to Wi-Fi,
          *         false otherwise.
          */
-        bool isConnected() override;
-        void disconnect() override;
+        bool isConnected();
 };

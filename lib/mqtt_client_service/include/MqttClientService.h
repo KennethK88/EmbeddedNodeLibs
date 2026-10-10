@@ -1,6 +1,5 @@
 #pragma once
 #include <WiFi.h>
-#include <IConnectionManager.h>
 #include <ArduinoMqttClient.h>
 
 /**
@@ -27,7 +26,7 @@
  *
  * The underlying network connection is provided by the ESP32 Wi-Fi client.
  */
-class MqttClientService : public IConnectionManager
+class MqttClientService
 {
     private:
         WiFiClient wifiClient;
@@ -45,7 +44,7 @@ class MqttClientService : public IConnectionManager
          *
          * Sets the MQTT client ID and authentication credentials.
          */
-        void init() override;
+        void init();
 
         /**
          * @brief Attempts to connect to the MQTT broker.
@@ -54,7 +53,7 @@ class MqttClientService : public IConnectionManager
          * established or the internal connection timeout is reached. The result
          * can be checked using isConnected().
          */
-        void connect() override;
+        void connect();
 
         /**
          * @brief Checks whether the MQTT client is currently connected.
@@ -62,7 +61,7 @@ class MqttClientService : public IConnectionManager
          * @return true if the MQTT client is connected to the broker,
          *         false otherwise.
          */
-        bool isConnected() override;
+        bool isConnected();
 
         /**
          * @brief Publishes a payload to an MQTT topic.
@@ -77,5 +76,5 @@ class MqttClientService : public IConnectionManager
         bool publish(const char* topic, const char* payload, bool retain);
         bool subscribe(const char* topic);
         bool readMessage(char* topic, std::size_t topicSize, char* payload, std::size_t payloadSize);
-        void disconnect() override;
+        void disconnect();
 };
