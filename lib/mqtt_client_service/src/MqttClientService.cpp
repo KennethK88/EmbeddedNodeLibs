@@ -39,10 +39,11 @@ bool MqttClientService::isConnected()
     return mqttClient.connected();
 }
 
-bool MqttClientService::publish(const char* topic, const char* payload)
+bool MqttClientService::publish(const char* topic, const char* payload, bool retain)
 {
+    if (!isConnected()) connect();
     if (!isConnected()) return false;
-    mqttClient.beginMessage(topic, true, 1);
+    mqttClient.beginMessage(topic, retain, 1);
     mqttClient.print(payload);
     return (mqttClient.endMessage() != 0);
 }
