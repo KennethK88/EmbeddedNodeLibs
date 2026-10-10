@@ -74,7 +74,7 @@ class MqttClientService : public IConnectionManager
          * @return true if the message was published successfully,
          *         false otherwise.
          */
-        bool publish(const char* topic, const char* payload);
+        bool publish(const char* topic, const char* payload, bool retain);
         bool subscribe(const char* topic);
         bool readMessage(char* topic, std::size_t topicSize, char* payload, std::size_t payloadSize);
         void disconnect() override;
