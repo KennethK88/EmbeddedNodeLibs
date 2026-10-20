@@ -1,15 +1,13 @@
 #pragma once
 #include <MqttClientService.h>
 
-class MqttOtaRequestReader
+class MqttOtaStatusPublisher
 {
     private:
         MqttClientService& mqttClientService;
-        bool otaRequested = false;
 
     public:
-        explicit MqttOtaRequestReader(MqttClientService& mqttClientService) : mqttClientService(mqttClientService) {}
-        bool subscribe();
-        bool update();
-        bool isOtaRequested() const;
+        explicit MqttOtaStatusPublisher(MqttClientService& mqttClientService) : mqttClientService(mqttClientService) {}
+        bool publishWindowOpen();
+        bool publishWindowClosed();
 };
