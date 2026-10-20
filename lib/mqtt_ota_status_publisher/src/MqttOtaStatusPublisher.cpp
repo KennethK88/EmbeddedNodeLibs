@@ -7,10 +7,10 @@ namespace
 
 bool MqttOtaStatusPublisher::publishWindowOpen()
 {
-    return mqttClientService.publish(otaStatusTopicTarget, "window_open", false);
+    return mqttClientService.publish(otaStatusTopicTarget, "window_open", true);
 }
 
 bool MqttOtaStatusPublisher::publishWindowClosed()
 {
-    return mqttClientService.publish(otaStatusTopicTarget, "window_closed", false);
+    return mqttClientService.publish(otaStatusTopicTarget, "window_closed", true);
 }
