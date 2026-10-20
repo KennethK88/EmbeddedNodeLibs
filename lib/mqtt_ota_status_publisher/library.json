@@ -1,0 +1,10 @@
+{
+  "name": "MqttOtaStatusPublisher",
+  "version": "1.0.0",
+  "build": {
+    "flags": [
+      "-I include"
+    ],
+    "srcDir": "src"
+  }
+}
