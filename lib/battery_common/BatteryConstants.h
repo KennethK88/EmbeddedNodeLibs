@@ -1,5 +1,5 @@
 #pragma once
-#include <Types.h>
+#include <BatteryTypes.h>
 
 /**
  * @brief Battery-related constants used for voltage and battery level processing.
@@ -20,7 +20,7 @@ namespace BatteryConstants
     constexpr BatteryVoltage BATTERY_VOLTAGE_MEASUREMENT_ERROR = -999.0f;
 
     /// Special voltage value indicating that no battery voltage has been measured yet.
-    constexpr BatteryVoltage BATTERY_VOLTAGE_NOT_INITIALIZED = -100;
+    constexpr BatteryVoltage BATTERY_VOLTAGE_NOT_INITIALIZED = -100.0f;
 
     /// Minimum valid battery level in percent.
     constexpr BatteryLevel BATTERY_LEVEL_MIN = 0;
@@ -30,7 +30,4 @@ namespace BatteryConstants
 
     /// Special battery level value indicating that no valid battery level is available.
     constexpr BatteryLevel BATTERY_LEVEL_NOT_INITIALIZED = 255;
-
-    /// Dummy battery level used in tests.
-    constexpr BatteryLevel BATTERY_LEVEL_DUMMY_VALID = 50;
 }
