@@ -1,6 +1,6 @@
 #pragma once
 #include <IBatteryDriver.h>
-#include <Types.h>
+#include <BatteryTypes.h>
 #include <BatteryConstants.h>
 
 /**
@@ -30,14 +30,15 @@ class ESP32BatteryDriver : public IBatteryDriver
          * @brief Last measured battery voltage in volts.
          */
         BatteryVoltage batteryVoltage = BatteryConstants::BATTERY_VOLTAGE_NOT_INITIALIZED;
+        const AdcPin adcPin;
+        const float voltageDividerFactor;
         
     public:
 
         /**
          * @brief Creates a new battery driver instance.
          */
-        ESP32BatteryDriver() = default;
-
+        explicit ESP32BatteryDriver(AdcPin adcPin, float voltageDividerFactor) : adcPin(adcPin), voltageDividerFactor(voltageDividerFactor) {}
         /**
          * @brief Initializes the battery voltage measurement hardware.
          *
@@ -60,5 +61,5 @@ class ESP32BatteryDriver : public IBatteryDriver
          * BatteryConstants::BATTERY_VOLTAGE_NOT_INITIALIZED if no voltage has
          * been read yet.
          */
-        BatteryVoltage getVoltage() override;
+        BatteryVoltage getVoltage() const override;
 };

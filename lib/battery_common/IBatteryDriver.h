@@ -1,5 +1,5 @@
 #pragma once
-#include <Types.h>
+#include <BatteryTypes.h>
 
 class IBatteryDriver
 {
@@ -7,5 +7,5 @@ class IBatteryDriver
         virtual ~IBatteryDriver() = default;
         virtual void init() = 0;
         virtual void readVoltage() = 0;
-        virtual BatteryVoltage getVoltage() = 0;
+        virtual BatteryVoltage getVoltage() const = 0;
 };

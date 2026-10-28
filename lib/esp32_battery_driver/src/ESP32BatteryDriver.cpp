@@ -1,29 +1,27 @@
 #include <ESP32BatteryDriver.h>
 #include <Arduino.h>
-#include <HardwareConfig.h>
 
 namespace
 {
     constexpr float MILLIVOLTS_TO_VOLTS = 0.001f;
 
-
-    BatteryVoltage calculateBatteryVoltageFromPinMilliVolts(int adcPinVoltageMilliVolts)
+    BatteryVoltage calculateBatteryVoltageFromPinMilliVolts(int adcPinVoltageMilliVolts, float voltageDividerFactor)
     {
-        return (static_cast<BatteryVoltage>(adcPinVoltageMilliVolts * MILLIVOLTS_TO_VOLTS * HardwareConfig::BATTERY_VOLTAGE_DIVIDER_FACTOR));
+        return (static_cast<BatteryVoltage>(adcPinVoltageMilliVolts * MILLIVOLTS_TO_VOLTS * voltageDividerFactor));
     }
 }
 
 void ESP32BatteryDriver::init()
 {
-    analogSetPinAttenuation(HardwareConfig::BATTERY_ADC_PIN, ADC_11db);
+    analogSetPinAttenuation(adcPin, ADC_11db);
 }
 
 void ESP32BatteryDriver::readVoltage()
 {
-    batteryVoltage = calculateBatteryVoltageFromPinMilliVolts(analogReadMilliVolts(HardwareConfig::BATTERY_ADC_PIN));
+    batteryVoltage = calculateBatteryVoltageFromPinMilliVolts(analogReadMilliVolts(adcPin), voltageDividerFactor);
 }
 
-BatteryVoltage ESP32BatteryDriver::getVoltage()
+BatteryVoltage ESP32BatteryDriver::getVoltage() const
 {
     return batteryVoltage;
 }
