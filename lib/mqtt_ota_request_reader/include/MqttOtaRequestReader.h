@@ -1,5 +1,5 @@
 #pragma once
-#include <MqttClientService.h>
+#include "MqttClientService.h"
 
 class MqttOtaRequestReader
 {
@@ -10,6 +10,6 @@ class MqttOtaRequestReader
     public:
         explicit MqttOtaRequestReader(MqttClientService& mqttClientService) : mqttClientService(mqttClientService) {}
         bool subscribe();
-        bool update();
         bool isOtaRequested() const;
+        bool processMessage(const char* topic, const char* payload);
 };
