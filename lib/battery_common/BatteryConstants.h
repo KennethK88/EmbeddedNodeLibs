@@ -1,19 +1,25 @@
 #pragma once
-#include <BatteryTypes.h>
+
+#include "BatteryTypes.h"
 
 /**
- * @brief Battery-related constants used for voltage and battery level processing.
+ * @file BatteryConstants.h
+ * @brief Defines constants for battery voltage and level processing.
+ */
+
+/**
+ * @brief Provides constants for battery voltage measurements and battery levels.
  *
- * The voltage limits define the mapping range for converting a measured
- * battery voltage into a battery level percentage. Special values are used
- * to represent invalid or uninitialized measurement states.
+ * Includes voltage limits for linear battery level calculation,
+ * valid battery level boundaries, and special values representing
+ * measurement errors or uninitialized states.
  */
 namespace BatteryConstants
 {
-    /// Battery voltage representing an empty battery in the linear level mapping.
+    /// Battery voltage representing an empty battery in the linear level calculation.
     constexpr BatteryVoltage BATTERY_VOLTAGE_EMPTY = 3.0f;
 
-     /// Battery voltage representing a fully charged battery in the linear level mapping.
+    /// Battery voltage representing a fully charged battery in the linear level calculation.
     constexpr BatteryVoltage BATTERY_VOLTAGE_FULL = 4.2f;
 
     /// Special voltage value indicating a battery voltage measurement error.
@@ -28,6 +34,6 @@ namespace BatteryConstants
     /// Maximum valid battery level in percent.
     constexpr BatteryLevel BATTERY_LEVEL_MAX = 100;
 
-    /// Special battery level value indicating that no valid battery level is available.
+    /// Special battery level value outside the valid range, indicating an uninitialized state.
     constexpr BatteryLevel BATTERY_LEVEL_NOT_INITIALIZED = 255;
 }

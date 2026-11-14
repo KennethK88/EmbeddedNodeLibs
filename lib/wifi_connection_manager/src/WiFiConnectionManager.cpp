@@ -1,8 +1,10 @@
-#include <WiFiConnectionManager.h>
+#include "WiFiConnectionManager.h"
+
+#include <Types.h>
+
 #include <WiFi.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
-#include <Types.h>
 
 namespace
 {

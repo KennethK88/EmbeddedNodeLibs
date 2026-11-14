@@ -2,23 +2,24 @@
 
 /**
  * @file WiFiConnectionManager.h
- * @brief Wi-Fi connection component for the ESP32-based room climate node.
+ * @brief Defines a service for managing ESP32 Wi-Fi connections.
  */
 
 /**
- * @brief Manages the Wi-Fi connection of the microcontroller.
+ * @brief Manages Wi-Fi initialization and connectivity.
  *
- * This class encapsulates Wi-Fi initialization, connection setup and connection
- * state monitoring. It implements the generic IConnectionManager interface and
- * can therefore be used by the controller independently of the concrete Wi-Fi
- * implementation.
+ * Encapsulates the ESP32 Wi-Fi connection setup and provides
+ * functionality for establishing and monitoring a Wi-Fi connection.
+ *
+ * The service can be used independently of application-specific
+ * communication protocols.
  */
 class WiFiConnectionManager
 {
     public:
 
         /**
-         * @brief Creates a Wi-Fi connection manager.
+         * @brief Constructs a Wi-Fi connection manager.
          */
         WiFiConnectionManager() = default;
 
@@ -30,19 +31,22 @@ class WiFiConnectionManager
         void init();
 
         /**
-         * @brief Attempts to establish the Wi-Fi connection.
+         * @brief Attempts to establish a Wi-Fi connection.
          *
-         * The method starts the Wi-Fi connection setup and waits until the
-         * connection is established or the internal connection timeout is
-         * reached. The result can be checked using isConnected().
+         * Initiates a connection using the configured credentials
+         * and checks the connection status at 500 ms intervals.
+         *
+         * Returns when connected or after a timeout of 10 seconds.
+         * Does nothing if already connected.
+         *
+         * The connection state can be checked using isConnected().
          */
         void connect();
 
         /**
-         * @brief Checks whether the Wi-Fi connection is currently established.
+         * @brief Checks whether the Wi-Fi connection is established.
          *
-         * @return true if the microcontroller is connected to Wi-Fi,
-         *         false otherwise.
+         * @return True if connected to Wi-Fi, false otherwise.
          */
         bool isConnected();
 };

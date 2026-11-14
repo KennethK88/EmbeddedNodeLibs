@@ -1,20 +1,26 @@
 #pragma once
+
 #include <cstdint>
 
 /**
- * @brief Battery voltage value in volts.
+ * @file BatteryTypes.h
+ * @brief Defines common data types for battery measurement and processing.
+ */
+
+/**
+ * @brief Represents a battery voltage in volts.
  */
 using BatteryVoltage = float;
 
 /**
- * @brief Battery level value in percent.
+ * @brief Represents a battery level in percent.
  *
- * Valid battery level values are in the range from 0 to 100.
- * Special values such as 255 may be used to indicate invalid or uninitialized states.
+ * Valid battery levels range from 0 to 100.
+ * The special value 255 represents an uninitialized battery level.
  */
 using BatteryLevel = std::uint8_t;
 
 /**
- * @brief GPIO pin used as an analog-to-digital converter input.
+ * @brief Represents a GPIO pin used for analog-to-digital conversion.
  */
 using AdcPin = std::uint8_t;
