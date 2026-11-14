@@ -1,5 +1,7 @@
 #include "FirmwareUpdateService.h"
-#include "Types.h"
+
+#include <Types.h>
+
 #include <ArduinoOTA.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
