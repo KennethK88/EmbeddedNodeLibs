@@ -6,3 +6,6 @@
 
 # Build artifacts
 *.exe
+
+# Documentation
+docs/html/
