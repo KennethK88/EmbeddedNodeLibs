@@ -1,0 +1,98 @@
+@startuml
+title EmbeddedNodeLibs – Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam shadowing false
+hide empty members
+
+' ============================================================
+' Reusable embedded library components
+' ============================================================
+
+package "EmbeddedNodeLibs" {
+
+    package "Battery" {
+
+        interface IBatteryDriver {
+            +init() : void
+            +readVoltage() : void
+            +getVoltage() const : BatteryVoltage
+        }
+
+        class ESP32BatteryDriver {
+            +init() : void
+            +readVoltage() : void
+            +getVoltage() const : BatteryVoltage
+        }
+
+        class BatterySensor {
+            +getBatteryLevel() const : BatteryLevel
+        }
+    }
+
+    package "Connectivity" {
+
+        class WiFiConnectionManager {
+            +init() : void
+            +connect() : void
+            +isConnected() : bool
+        }
+
+        class MqttClientService {
+            +init() : void
+            +connect() : void
+            +isConnected() : bool
+            +publish(topic, payload, retain) : bool
+            +subscribe(topic) : bool
+            +readMessage(topic, topicSize, payload, payloadSize) : bool
+            +disconnect() : void
+        }
+    }
+
+    package "Firmware and OTA" {
+
+        class FirmwareUpdateService {
+            +init() : bool
+            +handle() : void
+            +runMaintenanceWindow() : bool
+        }
+
+        class MqttOtaRequestReader {
+            +subscribe() : bool
+            +isOtaRequested() const : bool
+            +processMessage(topic, payload) : bool
+        }
+
+        class MqttOtaStatusPublisher {
+            +publishWindowOpen() : bool
+            +publishWindowClosed() : bool
+        }
+
+        class MqttFirmwareVersionPublisher {
+            +publishFirmwareVersion() : bool
+        }
+    }
+}
+
+' ============================================================
+' Interface implementations
+' ============================================================
+
+IBatteryDriver <|.. ESP32BatteryDriver
+
+' ============================================================
+' Battery dependencies
+' ============================================================
+
+BatterySensor --> IBatteryDriver
+
+' ============================================================
+' MQTT dependencies
+' ============================================================
+
+MqttOtaRequestReader --> MqttClientService
+MqttOtaStatusPublisher --> MqttClientService
+MqttFirmwareVersionPublisher --> MqttClientService
+
+@enduml
