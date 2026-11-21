@@ -1,0 +1,47 @@
+# Workflow name
+name: Build Documentation
+
+# Workflow triggers
+on:
+  push:
+    branches:
+    - "**"
+  pull_request:
+    branches:
+      - main
+  # Allow manual execution without new commits
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Jobs
+jobs:
+  # 1. Job: Documentation
+  documentation:
+    # Ubuntu runner
+    runs-on: ubuntu-26.04
+
+    # Workflow steps
+    steps:
+      # 1. Step: Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      # 2. Step: Install Doxygen and Graphviz
+      - name: Install Doxygen and Graphviz
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+      # 3. Step: Generate documentation
+      - name: Run Doxygen
+        run: doxygen docs/Doxyfile
+
+      # 4. Step: Upload generated documentation artifacts (docs/html)
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: doxygen-html
+          path: docs/html
+          if-no-files-found: error
