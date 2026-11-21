@@ -1,3 +1,5 @@
+[![Build Documentation](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/docs.yml)
+
 # EmbeddedNodeLibs
 
 
@@ -35,6 +37,7 @@ EmbeddedNodeLibs is actively used in ESP32-based projects, including RoomClimate
 - PlatformIO
 - ESP32 / ESP32-C3
 - Wi-Fi / MQTT
+- GitHub Actions
 - Doxygen
 - PlantUML
 
