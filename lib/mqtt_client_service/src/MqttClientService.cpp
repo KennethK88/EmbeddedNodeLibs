@@ -1,6 +1,5 @@
 #include "MqttClientService.h"
-
-#include <Types.h>
+#include "EmbeddedNodeTypes.h"
 
 #include <cstdint>
 #include <freertos/FreeRTOS.h>
