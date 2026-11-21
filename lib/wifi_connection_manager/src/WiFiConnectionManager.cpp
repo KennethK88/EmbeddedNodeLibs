@@ -1,6 +1,5 @@
 #include "WiFiConnectionManager.h"
-
-#include <Types.h>
+#include "EmbeddedNodeTypes.h"
 
 #include <WiFi.h>
 #include <freertos/FreeRTOS.h>

@@ -1,3 +1,4 @@
+[![Library Builds](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/build.yml)
 [![Build Documentation](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/docs.yml)
 
 # EmbeddedNodeLibs
@@ -28,7 +29,7 @@ Shared battery types, constants, and the `IBatteryDriver` interface are provided
 
 ## Current Status
 
-EmbeddedNodeLibs is actively used in ESP32-based projects, including RoomClimateNode. The library components are functional and continue to evolve. Further improvements, including the removal of application-specific dependencies, automated build verification, and native unit tests, are tracked in [GitHub Issues](https://github.com/KennethK88/EmbeddedNodeLibs/issues).
+EmbeddedNodeLibs is actively used in ESP32-based projects, including RoomClimateNode. The library components are functional and continue to evolve. Further improvements, including the removal of application-specific dependencies and native unit tests, are tracked in [GitHub Issues](https://github.com/KennethK88/EmbeddedNodeLibs/issues).
 
 
 ## Technologies
