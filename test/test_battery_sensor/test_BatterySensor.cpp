@@ -3,6 +3,7 @@
 #include "BatteryConstants.h"
 
 #include <unity.h>
+#include <limits>
 
 namespace
 {
@@ -117,4 +118,49 @@ void test_battery_voltage_above_full_should_be_battery_level_max()
 
     // Assert
     TEST_ASSERT_EQUAL_UINT8(BatteryConstants::BATTERY_LEVEL_MAX, batteryLevel);
+}
+
+void test_battery_voltage_nan_should_be_not_initialized()
+{
+    // Arrange
+    FakeBatteryDriver fakeBatteryDriver;
+    BatterySensor batterySensor(fakeBatteryDriver);
+    
+    fakeBatteryDriver.currentDriverVoltage = std::numeric_limits<BatteryVoltage>::quiet_NaN();
+
+    // Act
+    BatteryLevel batteryLevel = batterySensor.getBatteryLevel();
+
+    // Assert
+    TEST_ASSERT_EQUAL_UINT8(BatteryConstants::BATTERY_LEVEL_NOT_INITIALIZED, batteryLevel);
+}
+
+void test_battery_voltage_positive_infinity_should_be_not_initialized()
+{
+    // Arrange
+    FakeBatteryDriver fakeBatteryDriver;
+    BatterySensor batterySensor(fakeBatteryDriver);
+    
+    fakeBatteryDriver.currentDriverVoltage = std::numeric_limits<BatteryVoltage>::infinity();
+
+    // Act
+    BatteryLevel batteryLevel = batterySensor.getBatteryLevel();
+
+    // Assert
+    TEST_ASSERT_EQUAL_UINT8(BatteryConstants::BATTERY_LEVEL_NOT_INITIALIZED, batteryLevel);
+}
+
+void test_battery_voltage_negative_infinity_should_be_not_initialized()
+{
+    // Arrange
+    FakeBatteryDriver fakeBatteryDriver;
+    BatterySensor batterySensor(fakeBatteryDriver);
+    
+    fakeBatteryDriver.currentDriverVoltage = -std::numeric_limits<BatteryVoltage>::infinity();
+
+    // Act
+    BatteryLevel batteryLevel = batterySensor.getBatteryLevel();
+
+    // Assert
+    TEST_ASSERT_EQUAL_UINT8(BatteryConstants::BATTERY_LEVEL_NOT_INITIALIZED, batteryLevel);
 }
