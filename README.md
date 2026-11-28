@@ -1,5 +1,5 @@
 [![Library Builds](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/build.yml)
-[![Native Tests](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/native-tests.yml/badge.svg?branch=main)](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/native-tests.yml)
+[![Native Tests](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/test.yml)
 [![Build Documentation](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/KennethK88/EmbeddedNodeLibs/actions/workflows/docs.yml)
 
 # EmbeddedNodeLibs
