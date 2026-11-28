@@ -16,7 +16,7 @@ namespace
 
     bool canCalculateBatteryLevel(BatteryVoltage current)
     {
-        return ((current != BatteryConstants::BATTERY_VOLTAGE_MEASUREMENT_ERROR) && (current != BatteryConstants::BATTERY_VOLTAGE_NOT_INITIALIZED));
+        return ((current != BatteryConstants::BATTERY_VOLTAGE_MEASUREMENT_ERROR) && (current != BatteryConstants::BATTERY_VOLTAGE_NOT_INITIALIZED) && std::isfinite(current));
     }
 }
 
