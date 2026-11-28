@@ -41,7 +41,8 @@ class BatterySensor
          *
          * @return Battery level in percent (0-100), or
          *         BatteryConstants::BATTERY_LEVEL_NOT_INITIALIZED if the
-         *         voltage is uninitialized or indicates a measurement error.
+         *         voltage is uninitialized, indicates a measurement error,
+         *         or is non-finite (NaN or positive/negative infinity).
          */
         BatteryLevel getBatteryLevel() const;
 };
